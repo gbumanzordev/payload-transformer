@@ -1,4 +1,4 @@
-import { convertPayloadKeys, validateObject } from './index';
+import { convertPayloadKeys, validateObject } from './payload-transformer';
 
 test('validateObject function', () => {
   const testFn = () => 'Hello world';
