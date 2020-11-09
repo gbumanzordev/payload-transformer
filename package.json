@@ -1,10 +1,12 @@
 {
-  "name": "payload-transformer",
-  "version": "1.0.3",
+  "name": "@gbumanzordev/payload-transformer",
+  "version": "1.0.4",
   "description": "Transform payload keys",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/gbumanzordev"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json",

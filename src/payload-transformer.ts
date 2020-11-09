@@ -23,7 +23,7 @@ export const convertPayloadKeys = (
   if (validateObject(payload)) {
     const newObject = {};
     Object.keys(payload as object).forEach((key) => {
-      const convertedKey = conversionTypes[type](key);
+      const convertedKey = conversionTypes[type](key) as string;
       newObject[convertedKey] = convertPayloadKeys(payload[key], type);
     });
     return newObject;
