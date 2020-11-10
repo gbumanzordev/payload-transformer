@@ -2,7 +2,7 @@
 
 This package aims to help you keeping consistency when working with APIs that do not provide you with the type of keys you want for your models.
 
-You can work with `camelCase`, `snake_case` and even `kebab-case`, the package's purpose is to help you getting the transformed payload so you can use it in your applications.
+You can work with `camelCase`, `snake_case`, `PascalCase` and even `kebab-case`, the package's purpose is to help you getting the transformed payload so you can use it in your applications.
 
 ### Usage:
 
@@ -15,7 +15,7 @@ import { convertPayloadKeys } from 'payload-transformer';
 The funcion itself accepts two parameters, `payload` and `conversionType`.
 
 The payload can be pretty much anything, however, the function will validate that it is an object in order to convert its keys.
-The second parameter, so far accepts only three values: `'camelCase'`, `'snakeCase'` and `'kebabCase'` and its defaultt vaule is `'camelCase'`.
+The second parameter, so far accepts only three values: `'camelCase'`, `'snakeCase'`, `'PascalCase'` and `'kebabCase'` and its default vaule is `'camelCase'`.
 
 If you submit another value for the second parameter most likely you will get an error, however, if you're working with Typescript it is already validated so you will get an error right away.
 
