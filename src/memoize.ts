@@ -1,10 +1,10 @@
-export const memoize = (fn) => {
-  const cache = {};
+export const memoize = (functionCall: any) => {
+  const cachedFunction = {};
   return (...args) => {
     const stringifiedArgs = JSON.stringify(args);
-    return (cache[stringifiedArgs] =
-      typeof cache[stringifiedArgs] === 'undefined'
-        ? fn(...args)
-        : cache[stringifiedArgs]);
+    return (cachedFunction[stringifiedArgs] =
+      typeof cachedFunction[stringifiedArgs] === 'undefined'
+        ? functionCall(...args)
+        : cachedFunction[stringifiedArgs]);
   };
 };
