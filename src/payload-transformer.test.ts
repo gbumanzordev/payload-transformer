@@ -1,4 +1,5 @@
 import { convertPayloadKeys, validateObject } from './payload-transformer';
+import { convertedPascalCase, nestedPascalObject } from './utils/test-data';
 
 test('validateObject function', () => {
   const testFn = () => 'Hello world';
@@ -13,6 +14,7 @@ test('validateObject function', () => {
 test('convertPayloadFunction', () => {
   const previousPayload = { first_name: 'John', last_name: 'Doe' };
   const transformedPayload = convertPayloadKeys(previousPayload, 'camelCase');
+  const pascalCase = convertPayloadKeys(nestedPascalObject, 'pascalCase');
 
   expect(transformedPayload).toEqual({ firstName: 'John', lastName: 'Doe' });
 
@@ -28,4 +30,6 @@ test('convertPayloadFunction', () => {
     'first-name': 'John',
     'last-name': 'Doe',
   });
+
+  expect(pascalCase).toEqual(convertedPascalCase);
 });
