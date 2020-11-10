@@ -121,3 +121,66 @@ export const convertedPascalCase = {
     ],
   },
 };
+
+export const createCamelCaseObject = (level: number = 1): object => {
+  if (level < 1) {
+    return {
+      firstName: 'name',
+      lastName: 'lastname',
+      nullProp: null,
+      undefinedProp: undefined,
+      emptyData: {},
+      emptyList: [],
+      friendList: [
+        { friendName: 'name', friendAge: 22 },
+        { friendName: 'name', friendAge: 23 },
+        { friendName: 'name', friendAge: 24 },
+      ],
+    };
+  }
+  return {
+    firstName: 'name',
+    lastName: 'lastname',
+    nullProp: null,
+    undefinedProp: undefined,
+    emptyData: {},
+    emptyList: [],
+    friendList: [
+      { friendName: 'name', friendAge: 22 },
+      { friendName: 'name', friendAge: 23 },
+      { friendName: 'name', friendAge: 24 },
+    ],
+    nestedObject: createCamelCaseObject(level - 1),
+  };
+};
+export const createSnakeCaseObject = (level: number = 1): object => {
+  if (level < 1) {
+    return {
+      first_name: 'name',
+      last_name: 'lastname',
+      null_prop: null,
+      undefined_prop: undefined,
+      empty_data: {},
+      empty_list: [],
+      friend_list: [
+        { friend_name: 'name', friend_age: 22 },
+        { friend_name: 'name', friend_age: 23 },
+        { friend_name: 'name', friend_age: 24 },
+      ],
+    };
+  }
+  return {
+    first_name: 'name',
+    last_name: 'lastname',
+    null_prop: null,
+    undefined_prop: undefined,
+    empty_data: {},
+    empty_list: [],
+    friend_list: [
+      { friend_name: 'name', friend_age: 22 },
+      { friend_name: 'name', friend_age: 23 },
+      { friend_name: 'name', friend_age: 24 },
+    ],
+    nested_object: createSnakeCaseObject(level - 1),
+  };
+};
