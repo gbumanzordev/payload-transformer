@@ -1,8 +1,8 @@
 import {
-  _camelCase as camelCase,
-  _kebabCase as kebabCase,
-  _pascalCase as pascalCase,
-  _snakeCase as snakeCase,
+  camelCase,
+  kebabCase,
+  pascalCase,
+  snakeCase,
 } from './conversion-cases';
 
 const conversionTypes = {
