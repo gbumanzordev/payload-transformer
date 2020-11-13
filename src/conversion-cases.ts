@@ -1,8 +1,7 @@
-import { camelCase, snakeCase, kebabCase } from 'lodash';
-import { pascalCase } from './pascal-case';
-import { memoize } from './memoize';
+import { toCamelCase, toKebabCase, toPascalCase, toSnakeCase } from './cases';
+import { memoize } from './utils/memoize';
 
-export const _camelCase = memoize(camelCase);
-export const _snakeCase = memoize(snakeCase);
-export const _kebabCase = memoize(kebabCase);
-export const _pascalCase = memoize(pascalCase);
+export const camelCase = memoize(toCamelCase);
+export const snakeCase = memoize(toSnakeCase);
+export const kebabCase = memoize(toKebabCase);
+export const pascalCase = memoize(toPascalCase);
