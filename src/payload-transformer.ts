@@ -3,7 +3,8 @@ import {
   kebabCase,
   pascalCase,
   snakeCase,
-} from './conversion-cases';
+} from './cases/conversion-cases';
+import { validateObject } from './validations/validate-object';
 
 const conversionTypes = {
   camelCase,
@@ -18,29 +19,34 @@ type PayloadConversionType =
   | 'kebabCase'
   | 'pascalCase';
 
-export const validateObject = (testObject: unknown): boolean => {
-  return (
-    testObject === Object(testObject) &&
-    !Array.isArray(testObject) &&
-    typeof testObject !== 'function'
-  );
-};
-
 export const convertPayloadKeys = (
-  payload: unknown,
+  payload: unknown | object,
+  excludedKeys: string[] = [],
   type: PayloadConversionType = 'camelCase'
 ): unknown => {
   if (validateObject(payload)) {
     const newObject = {};
-    Object.keys(payload as object).forEach((key) => {
+    Object.keys(payload).forEach((key) => {
       const convertedKey = conversionTypes[type](key) as string;
-      newObject[convertedKey] = convertPayloadKeys(payload[key], type);
+      if (!excludedKeys.includes(convertedKey)) {
+        newObject[convertedKey] = convertPayloadKeys(
+          payload[key],
+          excludedKeys,
+          type
+        );
+      }
     });
     return newObject;
   } else if (Array.isArray(payload)) {
     return payload.map((item) => {
-      return convertPayloadKeys(item, type);
+      return convertPayloadKeys(item, excludedKeys, type);
     });
   }
   return payload;
 };
+
+export const converPayloadKeysAsync = async (
+  payload: unknown | object,
+  excludedKeys: string[] = [],
+  type: PayloadConversionType = 'camelCase'
+) => await convertPayloadKeys(payload, excludedKeys, type);
