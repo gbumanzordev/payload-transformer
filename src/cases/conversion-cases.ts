@@ -1,5 +1,5 @@
-import { toCamelCase, toKebabCase, toPascalCase, toSnakeCase } from './cases';
-import { memoize } from './utils/memoize';
+import { toCamelCase, toKebabCase, toPascalCase, toSnakeCase } from '.';
+import { memoize } from '../utils/memoize';
 
 export const camelCase = memoize(toCamelCase);
 export const snakeCase = memoize(toSnakeCase);
